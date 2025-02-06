@@ -9,11 +9,18 @@ Fully functioning weather app on Android with Google Maps and LLM (Gemini) capab
 3. Follow these [steps](https://developer.accuweather.com/getting-started#:~:text=Click%20the%20%E2%80%9CAdd%20a%20new,and%20details%20about%20your%20App) to get an Accuweather API key. Then add ACCUWEATHER_API_KEY=your_key to your local.properties file.
 
 <div align="center">
-  <h2>Home</h2>
-  <img src="/images/home.png" alt="Home" width="1000">
+  <h2>Google Gemini and Google Maps</h2>
+  <img src="/images/llm.png" alt="Google Gemini" width="400" height="800">
+  <img src="/images/maps.png" alt="Google Maps" width="400" height="800">
 </div>
 
-<b>Team 41 member information</b>
+<div align="center">
+  <h2>Login and Home Pages</h2>
+  <img src="/images/login.png" alt="Login" width="400" height="800">
+  <img src="/images/home.png" alt="Home" width="400" height="800">
+</div>
+
+<hr />
 
 <b>Team member's information:</b>
 <br/>
