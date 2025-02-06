@@ -1,0 +1,14 @@
+# Gradle files
+.gradle/
+build/
+
+# Local configuration
+local.properties
+secrets.properties
+# IntelliJ
+.idea/
+
+# Room schemas
+app/schemas/
+
+.DS_Store

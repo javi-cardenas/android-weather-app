@@ -1,0 +1,133 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "edu.uiuc.cs427app"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // https://developer.android.com/training/testing/instrumented-tests/androidx-test-libraries/runner#enable-gradle
+        // The following argument makes the Android Test Orchestrator run its
+        // "pm clear" command after each test invocation. This command ensures
+        // that the app's state is completely cleared between tests.
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
+        def properties = new Properties()
+        properties.load(file('../local.properties').newDataInputStream())
+        buildConfigField("String", "MAPS_API_KEY", "\"${properties.getProperty('MAPS_API_KEY')}\"")
+        buildConfigField("String", "ACCUWEATHER_API_KEY", "\"${properties.getProperty('ACCUWEATHER_API_KEY')}\"")
+        buildConfigField("String", "AI_API_KEY", "\"${properties.getProperty('AI_API_KEY')}\"")
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    implementation 'com.google.android.gms:play-services-cronet:18.0.1'
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView_version"
+    implementation "androidx.work:work-runtime:$work_version"
+    implementation "com.google.guava:guava:$guava_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "org.mindrot:jbcrypt:$jbcrypt_version"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-guava:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment:$navigation_version"
+    implementation "androidx.navigation:navigation-ui:$navigation_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Dagger-Hilt
+    implementation "com.google.dagger:hilt-android:$daggerhilt_version"
+    annotationProcessor "com.google.dagger:hilt-compiler:$daggerhilt_version"
+
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:$daggerhilt_version"
+    androidTestAnnotationProcessor "com.google.dagger:hilt-compiler:$daggerhilt_version"
+    testImplementation "com.google.dagger:hilt-android-testing:$daggerhilt_version"
+    testAnnotationProcessor "com.google.dagger:hilt-compiler:$daggerhilt_version"
+
+    // Google maps
+    implementation "com.google.android.gms:play-services-maps:$gms_version"
+
+    // Gemini
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+
+    // Required to use `ListenableFuture` from Guava Android for one-shot generation
+    implementation("com.google.guava:guava:31.0.1-android")
+
+    // Required to use `Publisher` from Reactive Streams for streaming operations
+    implementation("org.reactivestreams:reactive-streams:1.0.4")
+
+
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.17.0'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test:rules:1.6.1'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.2.1'
+    androidTestUtil 'androidx.test:orchestrator:1.5.1'
+}

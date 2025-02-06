@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.NewLocationActivity">
+
+    <TextView
+        android:id="@+id/textViewNewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New Location"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="City"
+        app:layout_constraintBottom_toTopOf="@+id/buttonValidateLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNewLocation"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:id="@+id/buttonAddNewLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        app:layout_constraintBottom_toTopOf="@+id/buttonValidateLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCity"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:id="@+id/buttonValidateLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Validate"
+        app:layout_constraintBottom_toTopOf="@+id/textViewLocationDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddNewLocation" />
+
+    <TextView
+        android:id="@+id/textViewLocationDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textViewWeatherLocationDetails"
+        app:layout_constraintTop_toBottomOf="@+id/buttonValidateLocation"/>
+
+    <TextView
+        android:id="@+id/textViewWeatherLocationDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLocationDetails"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Team 41</string>
+    <string-array name="theme_options">
+        <item>Purple Theme</item>
+        <item>Teal Theme</item>
+        <item>Orange Theme</item>
+    </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>
